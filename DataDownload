@@ -39,7 +39,7 @@ m4=b'{"BackCoverEnergy":{"rActivePowerExt":5.877471754111438e-39,"rActivePowerIn
 messages=[m0,m1,m2,m3,m4]
 
 #just to initialize, after will be overwritten
-user_dict=json.loads(messages[0].decode('utf-8'))
+user_dict=json.loads(messages[0].value.decode('utf-8'))
 mess=pd.DataFrame.from_dict({(i,j): user_dict[i][j] 
                         for i in user_dict.keys() 
                         for j in user_dict[i].keys()},
