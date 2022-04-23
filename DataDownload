@@ -4,7 +4,7 @@ Created on Fri Apr 22 14:45:47 2022
 
 @author: Angela
 """
-#RUN FIRSTLY THIS PART JUST ONCE AND THEN THE SECOND ONE EVERY TIME YOU WANT TO GATHER THE DATA CHANGING THE NAME OF THE EXCEL FILE, ONLY WHEN YOU FINISH RUN THE CLOSE COMMAND
+#RUN FIRSTLY THIS PART JUST ONCE AND THEN THE SECOND ONE EVERY TIME YOU WANT TO GATHER THE DATA, 3RD TO CREATE THE EXCEL FILE WITH THE DATA STORED, ONLY WHEN YOU FINISH RUN THE CLOSE COMMAND
  
 #Connection to Kafka and download of the data
 
@@ -22,6 +22,8 @@ consumer_conf['auto.offset.reset'] = 'earliest'
 kafka_consumer = Consumer(consumer_conf)
 kafka_consumer.subscribe(['opc2k_topic'])
 
+
+###2ND PART
 messages=list()
 for i in range(0,480):
     messs= kafka_consumer.poll(timeout=1.0)
@@ -34,7 +36,7 @@ for i in range(0,480):
 for j in range(len(messages)):
     print(messages[j].value())
 
-###2ND PART
+###3RD PART
 a=messages[0].value()
 #just to initialize, after will be overwritten
 user_dict=json.loads(a.decode('utf-8'))
@@ -60,5 +62,5 @@ mess.to_excel(r'C:\Users\Angela\Videos\II ANNO POLI\SMLAB\LAB_B\480secOnly1FC_Fa
 
 
 
-###3RD PART
+###4TH PART
 kafka_consumer.close()
