@@ -4,6 +4,7 @@ Created on Fri Apr 22 14:45:47 2022
 
 @author: Angela
 """
+#BEFORE STARTING CHANGE THE GROUP_ID
 #RUN FIRSTLY THIS PART JUST ONCE AND THEN THE SECOND ONE EVERY TIME YOU WANT TO GATHER THE DATA, 3RD TO CREATE THE EXCEL FILE WITH THE DATA STORED, ONLY WHEN YOU FINISH RUN THE CLOSE COMMAND
  
 #Connection to Kafka and download of the data
@@ -18,7 +19,7 @@ import json
 consumer_conf = dict()
 consumer_conf['bootstrap.servers'] = '10.48.134.234:9092'
 consumer_conf['group.id'] = 'Nuc'
-consumer_conf['auto.offset.reset'] = 'earliest'
+consumer_conf['auto.offset.reset'] = 'latest'
 kafka_consumer = Consumer(consumer_conf)
 kafka_consumer.subscribe(['opc2k_topic'])
 
