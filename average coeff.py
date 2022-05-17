@@ -20,6 +20,14 @@ bcover[2] = np.loadtxt("C:/Users/lverpelli/Desktop/SMLAB/11052022_3csv.csv", del
 brk = []
 
 model="rbf"
+
+plt.plot(np.arange(len(bcover[0][brk[0][0]:brk[0][1]])), bcover[0][brk[0][0]:brk[0][1]] )
+plt.plot(np.arange(len(bcover[1][brk[1][0]:brk[1][1]])), bcover[1][brk[1][0]:brk[1][1]] )
+plt.plot(np.arange(len(bcover[2][brk[2][0]:brk[2][1]])), bcover[2][brk[2][0]:brk[2][1]] )
+
+for i in range(len(bcover)):
+    plt.plot(np.arange(len(bcover[i][brk[i][0]:brk[i][1]])), bcover[i][brk[i][0]:brk[i][1]] )
+    
     
 for i in range(len(bcover)):
     algo = rpt.Pelt(model="rbf", min_size=1, jump=1).fit(bcover[i])
