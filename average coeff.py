@@ -42,7 +42,7 @@ plt.scatter(x,y,color="red")
 plt.title("Back Cover")
 plt.ylabel("Active Power")
 
-linear_model ['a']=np.polyfit(x,y,5)
+linear_model ['a']=np.polyfit(x,y,4)
 linear_model_fn=np.poly1d(linear_model['a'])
 x_s=np.arange(0,len(y))
 plt.plot(x_s,linear_model_fn(x_s),color="b")
@@ -56,7 +56,7 @@ plt.scatter(x,y,color="red")
 plt.title("Back Cover")
 plt.ylabel("Active Power")
 
-linear_model ['b']=np.polyfit(x,y,5)
+linear_model ['b']=np.polyfit(x,y,4)
 linear_model_fn=np.poly1d(linear_model['b'])
 x_s=np.arange(0,len(y))
 plt.plot(x_s,linear_model_fn(x_s),color="b")
@@ -70,7 +70,7 @@ plt.scatter(x,y,color="red")
 plt.title("Back Cover")
 plt.ylabel("Active Power")
 
-linear_model ['c']=np.polyfit(x,y,5)
+linear_model ['c']=np.polyfit(x,y,4)
 linear_model_fn=np.poly1d(linear_model['c'])
 x_s=np.arange(0,len(y))
 plt.plot(x_s,linear_model_fn(x_s),color="b")
@@ -81,4 +81,7 @@ print("BackCover:\n", linear_model)
 
 mean_values = linear_model.mean(axis = 1)
 std_dev_values = linear_model.std(axis = 1)
+
+print("The mean value of the coefficients are:\n", mean_values)
+
 
