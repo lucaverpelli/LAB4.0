@@ -21,19 +21,24 @@ brk = []
 
 model="rbf"
 
-# plt.plot(np.arange(len(bcover[0][brk[0][0]:brk[0][1]])), bcover[0][brk[0][0]:brk[0][1]] )
-# plt.plot(np.arange(len(bcover[1][brk[1][0]:brk[1][1]])), bcover[1][brk[1][0]:brk[1][1]] )
-# plt.plot(np.arange(len(bcover[2][brk[2][0]:brk[2][1]])), bcover[2][brk[2][0]:brk[2][1]] )
-
-
-    
-    
+      
 for i in range(len(bcover)):
     algo = rpt.Pelt(model="rbf", min_size=1, jump=1).fit(bcover[i])
     my_bkps= algo.predict(pen=7)
     brk.append(my_bkps)
     fig, (ax,) = rpt.display(bcover[i], my_bkps, my_bkps,figsize=(10, 6))
     plt.show()
+
+#working time
+working_time = list()
+for i in range(len(bcover)):
+    working_time.append(brk[i][1]-brk[i][0])
+    
+working_t = np.array(working_time)
+mean_working_t = working_t.mean()
+std_working_t = working_t.std()
+
+print("The mean of the working time is:\n", mean_working_t , "\nThe standard deviation of the working time is:\n", std_working_t )
 
     
 #non linear regression
@@ -91,7 +96,7 @@ print("BackCover:\n", linear_model)
 mean_values = linear_model.mean(axis = 1)
 std_dev_values = linear_model.std(axis = 1)
 
-print("The mean value of the coefficients are:\n", mean_values)
+print("\nThe mean value of the coefficients are:\n", mean_values)
 
 def f(x):
    return mean_values[0]*x**4 + mean_values[1]*x**3 + mean_values[2]*x**2 + mean_values[3]*x + mean_values[4]
